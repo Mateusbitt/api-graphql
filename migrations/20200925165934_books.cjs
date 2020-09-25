@@ -4,8 +4,8 @@ exports.up = (knex) => (
   knex.raw('create extension if not exists "pgcrypto"')
     .then(() => (
       knex.schema.createTable('books', (table) => {
-        table.unique('books_id')
-        table.string('books_id').notNullable().defaultTo(knex.raw('gen_random_uuid()'))
+        table.unique('book_id')
+        table.string('book_id').notNullable().defaultTo(knex.raw('gen_random_uuid()'))
         table.string('name').notNullable()
         table.integer('year').unsigned().notNullable()
         table.datetime('created_at', { precision: 6 }).notNullable().defaultTo(knex.fn.now(6))
@@ -17,4 +17,4 @@ exports.up = (knex) => (
       }))).then(() => knex.raw(onUpdateTrigger('books')))
 )
 
-exports.down = (knex) => knex.dropTable('books')
+exports.down = (knex) => knex.schema.dropTable('books')
