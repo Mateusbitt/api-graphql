@@ -2,7 +2,7 @@ import createBook from '../../Infrastructure/createBook.js'
 import updateBook from '../../Infrastructure/updateBook.js'
 import deleteBook from '../../Infrastructure/deleteBook.js'
 
-export default (parent, { id, deleteIt, bookData }, ctx) => {
+export default (_, { id, deleteIt, bookData }, ctx) => {
   if (!deleteIt) {
     return id ? updateBook(id, bookData) : createBook(ctx, bookData)
   }

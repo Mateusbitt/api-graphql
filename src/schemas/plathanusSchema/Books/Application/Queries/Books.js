@@ -1,8 +1,3 @@
-import books from '../../Infrastructure/books.js'
+import readBook from '../../Infrastructure/readBook.js'
 
-export default (parent, { id, deleted }, ctx) => {
-  if (id) {
-    return [books.find((book) => book.id === id && !book.deleted)]
-  }
-  return books.filter((book) => (deleted ? book : !book.deleted))
-}
+export default (_, { id, deleted }) => readBook(id, deleted)
