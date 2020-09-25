@@ -1,4 +1,5 @@
 import knexLib from 'knex'
+import knexNest from 'knexnest'
 
 const knex = knexLib({
   client: 'pg',
@@ -11,4 +12,6 @@ const knex = knexLib({
   // useNullAsDefault: true
 })
 
-export { knex }
+const knexnest = knexNest
+
+export { knex, knexnest }
