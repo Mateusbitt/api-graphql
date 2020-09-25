@@ -1,0 +1,63 @@
+version: '3'
+networks:
+  main:
+
+services:
+
+  proxy:
+    networks:
+      main:
+        aliases:
+          - "${PROXY_URL}"
+    container_name: "${PROXY_URL}"
+    image: jwilder/nginx-proxy:alpine
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "./proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+
+  db:
+    networks:
+      main:
+        aliases:
+          - "${DB_URL}"
+    container_name: "${DB_URL}"
+    image: postgres:12.4-alpine
+    volumes:
+      - "./.data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "${DBPASS}"
+    restart: unless-stopped
+
+  api:
+    networks:
+      main:
+        aliases:
+          - "${API_URL}"
+    container_name: "${API_URL}"
+    image: nodejs-knex
+    volumes:
+      - "./:/opt/app-root/src:rw"
+    ports:
+      - 80
+    environment:
+      VIRTUAL_HOST: "${API_URL}"
+      VIRTUAL_PORT: 80
+      PORT: 80
+      APP_ENV: "${ENVIRONMENT}"
+      NODE_ENV: "${ENVIRONMENT}"
+
+      DB_PORT: "${DB_PORT}"
+      DB_HOST: "${DB_URL}"
+      DB_USER: "${DB_USER}"
+      DB_PASS: "${DB_PASS}"
+      DB_DATABASE: "${DB_DATABASE}"
+
+      DEBUG: "true"
+    command: ['./wait-for-it.sh', '-t', '0', '${DB_URL}:5432', '--', '.s2i/bin/assemble']
+    restart: unless-stopped
