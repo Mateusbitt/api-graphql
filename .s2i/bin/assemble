@@ -21,8 +21,8 @@ echo "### Linting..."
 yarn lint
 
 # if [ $WORKER == 'true' ]; then
-  # echo "### Runing migrations"
-  # knex migrate:latest --knexfile knexfile.cjs --esm
+  echo "### Runing migrations"
+  knex migrate:latest --knexfile knexfile.cjs --esm
 # fi
 
 # When we are local, it is needed to go to deploy
