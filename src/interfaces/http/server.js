@@ -1,10 +1,17 @@
 import ApolloServer from 'apollo-server'
 import { v4 as uuidv4 } from 'uuid'
 import schema from '../../schemas/schema.js'
+import { knex } from '../../infra/database/postgres.js'
 
 const server = new ApolloServer.ApolloServer({
   schema,
-  context: () => ({ id: null, libs: { uuidv4 } }),
+  context: () => (
+    {
+      id: null,
+      database: { knex },
+      libs: { uuidv4 },
+    }
+  ),
 })
 
 server.init = () => {
