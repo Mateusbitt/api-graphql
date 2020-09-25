@@ -12,6 +12,7 @@
     "apollo-server": "^2.18.1",
     "graphql-tools": "^6.2.3",
     "knex": "^0.21.5",
+    "knexnest": "^1.0.0",
     "pg": "^8.3.3",
     "uuid": "^8.3.0"
   },
