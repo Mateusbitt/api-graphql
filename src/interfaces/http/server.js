@@ -4,8 +4,7 @@ import schema from '../../schemas/schema.js'
 
 const server = new ApolloServer.ApolloServer({
   schema,
-  context: () => ({ id: 1, libs: { uuidv4 } })
-  ,
+  context: () => ({ id: null, libs: { uuidv4 } }),
 })
 
 server.init = () => {

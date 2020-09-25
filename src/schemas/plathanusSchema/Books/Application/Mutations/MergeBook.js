@@ -1,13 +1,13 @@
-import create from '../../Infrastructure/create.js'
-import update from '../../Infrastructure/update.js'
-import remove from '../../Infrastructure/remove.js'
+import createBook from '../../Infrastructure/createBook.js'
+import updateBook from '../../Infrastructure/updateBook.js'
+import deleteBook from '../../Infrastructure/deleteBook.js'
 
 export default (parent, { id, deleteIt, bookData }, ctx) => {
   if (!deleteIt) {
-    return id ? update(id, bookData) : create(ctx, bookData)
+    return id ? updateBook(id, bookData) : createBook(ctx, bookData)
   }
   if (id) {
-    return remove(id)
+    return deleteBook(id)
   }
   return null
 }
