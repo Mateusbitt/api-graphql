@@ -1,14 +1,12 @@
-import books from './books.js'
+import readBook from './readBook.js'
 
-export default (id) => {
-  // SoftDelete
-  // const actualBook = books.find((book) => book.id === id)
-  // const restBooks = books.filter((book) => book.id !== id)
-  // const updateBook = [{
-  //   ...actualBook,
-  //   deleted: true,
-  // }]
-  // books = [...restBooks, ...updateBook]
-  books = [...books.find((book) => book.id === id)]
-  return null
+export default (ctx, id) => {
+  console.log(id)
+  ctx.database.knex('books')
+    .update({
+      deleted_at: ctx.database.knex.fn.now(),
+      deleted_by: 'anonymous',
+    })
+    .where('book_id', '=', id)
+    .then(() => readBook(ctx, { id }))
 }
