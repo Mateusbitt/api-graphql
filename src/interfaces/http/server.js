@@ -1,5 +1,4 @@
 import ApolloServer from 'apollo-server'
-import { v4 as uuidv4 } from 'uuid'
 import schema from '../../schemas/schema.js'
 import { knex, knexnest } from '../../infra/database/postgres.js'
 
@@ -9,7 +8,7 @@ const server = new ApolloServer.ApolloServer({
     {
       id: null,
       database: { knex, knexnest },
-      libs: { uuidv4 },
+      libs: { },
     }
   ),
 })
