@@ -1,7 +1,6 @@
 import readBook from './readBook.js'
 
-export default (ctx, id) => {
-  console.log(id)
+export default (ctx, id) => (
   ctx.database.knex('books')
     .update({
       deleted_at: ctx.database.knex.fn.now(),
@@ -9,4 +8,4 @@ export default (ctx, id) => {
     })
     .where('book_id', '=', id)
     .then(() => readBook(ctx, { id }))
-}
+)
