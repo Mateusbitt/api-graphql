@@ -22,7 +22,7 @@ MergeBook(
 
 export const BookInputs = `
 input bookData {
-  name: String
-  year: Int
+  name: String!
+  year: Int!
 }
 `
