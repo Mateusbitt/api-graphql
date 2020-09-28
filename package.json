@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "lint": "eslint",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --verbose"
   },
   "dependencies": {
     "apollo-server": "^2.18.1",
