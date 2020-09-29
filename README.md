@@ -8,6 +8,17 @@ This is a GraphQl api example using:
 
 # Install
 
+You need to go to your **/etc/hosts** file and ADD the lines below:  
+```
+127.0.0.1   proxy.local.plathanus.com.br 
+127.0.0.1   pg.local.plathanus.com.br
+127.0.0.1   api.local.plathanus.com.br
+```
+
+Now it will be possible to use a real full address, and not the old (and lame) **'localhost:port'**
+
+P.S.: There is an hosts file on windows aswell, but I do not know where, try google! =)
+
 Build image  
 `docker build -t nodejs-knex docker-images/nodejs-knex`
 
