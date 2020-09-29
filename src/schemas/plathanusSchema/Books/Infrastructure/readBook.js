@@ -13,6 +13,15 @@ export default (ctx, { id, deleted }) => {
     sql.whereNull('b.deleted_at')
   }
   return (
-    ctx.database.knexnest(sql).then((data) => data)
+    ctx.database.knexnest(sql)
+      .then((data) => data)
+      .catch((error) => {
+        const errorObj = {
+          msg: error.message,
+          hint: error.hint,
+        }
+        ctx.core.errorHandling('readBook: There was a error in the database!', 'database_error', errorObj)
+        return null
+      })
   )
 }

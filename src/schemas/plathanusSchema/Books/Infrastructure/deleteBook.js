@@ -8,4 +8,12 @@ export default (ctx, id) => (
     })
     .where('book_id', '=', id)
     .then(() => readBook(ctx, { id }))
+    .catch((error) => {
+      const errorObj = {
+        msg: error.message,
+        hint: error.hint,
+      }
+      ctx.core.errorHandling('deleteBook: There was a error in the database!', 'database_error', errorObj)
+      return null
+    })
 )

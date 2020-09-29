@@ -12,4 +12,12 @@ export default (ctx, bookData) => (
       if (!data[0]) return null
       return readBook(ctx, { id: data[0] })
     })
+    .catch((error) => {
+      const errorObj = {
+        msg: error.message,
+        hint: error.hint,
+      }
+      ctx.core.errorHandling('createBook: There was a error in the database!', 'database_error', errorObj)
+      return null
+    })
 )
