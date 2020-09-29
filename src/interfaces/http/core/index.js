@@ -1,3 +1,5 @@
 export { validation } from './validation.js'
 export { errorHandling } from './errorHandling.js'
 export { createToken } from './createToken.js'
+export { checkToken } from './checkToken.js'
+export { tokenVerifier } from './tokenVerifier.js'

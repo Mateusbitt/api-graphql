@@ -2,24 +2,34 @@ import APS from 'apollo-server'
 import crypto from 'crypto'
 import schema from '../../schemas/schema.js'
 import { knex, knexnest } from '../../infra/database/postgres.js'
-import { validation, errorHandling, createToken } from './core/index.js'
+import {
+  validation,
+  errorHandling,
+  createToken,
+  checkToken,
+  tokenVerifier,
+} from './core/index.js'
 
 const server = new APS.ApolloServer({
   schema,
-  context: () => (
-    {
-      id: null,
-      database: { knex, knexnest },
-      libs: {
-        crypto,
-      },
-      core: {
-        validation,
-        errorHandling,
-        createToken,
-      },
-    }
-  ),
+  context: ({ req, connection }) => {
+    const token = checkToken(req, connection)
+    const user = tokenVerifier(token)
+    return (
+      {
+        user,
+        database: { knex, knexnest },
+        libs: {
+          crypto,
+        },
+        core: {
+          validation,
+          errorHandling,
+          createToken,
+        },
+      }
+    )
+  },
   formatError: (error) => {
     // eslint-disable-next-line no-param-reassign
     delete error.extensions.exception.stacktrace
