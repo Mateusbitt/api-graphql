@@ -53,6 +53,8 @@ services:
       NODE_ENV: "${ENVIRONMENT}"
 
       HASH_SECRET: ${HASH_SECRET}
+      JWT_SECRET: ${JWT_SECRET}
+      TOKEN_EXPIRE_IN: ${TOKEN_EXPIRE_IN}
 
       DB_PORT: "${DB_PORT}"
       DB_HOST: "${DB_URL}"
