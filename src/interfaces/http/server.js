@@ -2,7 +2,7 @@ import APS from 'apollo-server'
 import crypto from 'crypto'
 import schema from '../../schemas/schema.js'
 import { knex, knexnest } from '../../infra/database/postgres.js'
-import { validation, errorHandling } from './core/index.js'
+import { validation, errorHandling, createToken } from './core/index.js'
 
 const server = new APS.ApolloServer({
   schema,
@@ -16,6 +16,7 @@ const server = new APS.ApolloServer({
       core: {
         validation,
         errorHandling,
+        createToken,
       },
     }
   ),
