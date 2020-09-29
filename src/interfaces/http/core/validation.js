@@ -1,4 +1,4 @@
-import AS from 'apollo-server'
+import APS from 'apollo-server'
 // import moment from 'moment'
 
 /* Checks for required values */
@@ -157,7 +157,7 @@ const validation = (value, rules) => {
     .filter((error) => error !== null)
 
   if (errors.length) {
-    throw new AS.ApolloError('There was error(s) validating the params!', 'params_arguments_invalid', errors)
+    throw new APS.ApolloError('There was error(s) validating the params!', 'params_arguments_invalid', errors)
   }
 
   return true

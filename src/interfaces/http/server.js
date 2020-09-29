@@ -1,9 +1,9 @@
-import ApolloServer from 'apollo-server'
+import APS from 'apollo-server'
 import schema from '../../schemas/schema.js'
 import { knex, knexnest } from '../../infra/database/postgres.js'
-import { validation } from './core/index.js'
+import { validation, errorHandling } from './core/index.js'
 
-const server = new ApolloServer.ApolloServer({
+const server = new APS.ApolloServer({
   schema,
   context: () => (
     {
@@ -12,6 +12,7 @@ const server = new ApolloServer.ApolloServer({
       libs: { },
       core: {
         validation,
+        errorHandling,
       },
     }
   ),
