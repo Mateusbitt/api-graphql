@@ -1,4 +1,5 @@
 import APS from 'apollo-server'
+import crypto from 'crypto'
 import schema from '../../schemas/schema.js'
 import { knex, knexnest } from '../../infra/database/postgres.js'
 import { validation, errorHandling } from './core/index.js'
@@ -9,7 +10,9 @@ const server = new APS.ApolloServer({
     {
       id: null,
       database: { knex, knexnest },
-      libs: { },
+      libs: {
+        crypto,
+      },
       core: {
         validation,
         errorHandling,

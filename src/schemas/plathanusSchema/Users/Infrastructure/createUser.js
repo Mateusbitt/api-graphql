@@ -7,7 +7,7 @@ export default (ctx, userData) => (
       picture: userData.picture,
       email: userData.email,
       username: userData.email.split('@')[0],
-      password: userData.password,
+      password: ctx.libs.crypto.createHmac('sha256', process.env.HASH_SECRET).update(userData.password).digest('hex'),
       approval_token: '123abc',
       role: 'reader',
       created_by: 'sysadmin',
