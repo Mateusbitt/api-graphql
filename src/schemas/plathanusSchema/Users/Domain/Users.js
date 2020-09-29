@@ -14,6 +14,10 @@ export const UserDomain = `
     librarian
     reader
   }
+
+  type UserAuth {
+    token: String
+  }
 `
 
 export const UserQueries = `
@@ -21,6 +25,11 @@ export const UserQueries = `
     id: String
     deleted: Boolean
   ): [User]
+
+  UserLogin(
+    username: String!
+    password: String!
+  ) : UserAuth
 `
 
 export const UserMutations = `
