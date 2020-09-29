@@ -29,3 +29,8 @@ Create Database
 # Run
 
 `docker-compose up` 
+
+
+# Tests
+
+`docker exec -it api.local.plathanus.com.br yarn test`
