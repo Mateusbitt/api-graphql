@@ -1,4 +1,6 @@
+import crypto from 'crypto'
 import MergeUser from './MergeUser.js'
+import { validation } from '../../../../../interfaces/http/core/validation.js'
 
 describe('MergeUser Mutation', () => {
   it('will create a user', async () => {
@@ -9,11 +11,17 @@ describe('MergeUser Mutation', () => {
         name: 'My user',
         picture: 'https://picsum.photos/200/300',
         email: 'breno.mazieiro@gmail.com',
-        password: '123456',
+        password: '12345678',
       },
     }
     const ctx = {
       id: null,
+      core: {
+        validation,
+      },
+      libs: {
+        crypto,
+      },
       database: {
         knex: () => (
           {
@@ -44,6 +52,9 @@ describe('MergeUser Mutation', () => {
     }
     const ctx = {
       id: null,
+      core: {
+        validation,
+      },
       database: {
         knex: () => (
           {
