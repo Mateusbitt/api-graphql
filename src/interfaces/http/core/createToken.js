@@ -4,7 +4,7 @@ const createToken = (userData) => {
   const token = (
     jwt
       .sign(
-        userData[0],
+        userData,
         process.env.JWT_SECRET,
         { expiresIn: process.env.TOKEN_EXPIRE_IN },
       )
