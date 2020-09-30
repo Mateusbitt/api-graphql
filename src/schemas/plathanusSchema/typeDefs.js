@@ -1,3 +1,4 @@
+import { paginations } from './_definitions/Filters/Paginations.js'
 import {
   BookDomain, BookQueries, BookMutations, BookInputs,
 } from './Books/Domain/Books.js'
@@ -22,6 +23,7 @@ type Mutation {
 
 ${BookInputs}
 ${UserInputs}
+${paginations}
 `
 
 export default typeDefs

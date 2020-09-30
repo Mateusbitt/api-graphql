@@ -24,6 +24,7 @@ export const UserQueries = `
   Users(
     id: String
     deleted: Boolean
+    pagination: pagination
   ): [User]
 
   UserLogin(

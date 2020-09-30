@@ -12,6 +12,8 @@ describe('Users Queries', () => {
         knex: () => ({
           select: () => ({
             whereNull: () => {},
+            limit: () => ({}),
+            offset: () => true,
           }),
         }),
         knexnest: () => new Promise((resolve) => { resolve({ id: '1' }) }),
