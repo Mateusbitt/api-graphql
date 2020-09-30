@@ -7,7 +7,10 @@ describe('Books Queries', () => {
       deleted: false,
     }
     const ctx = {
-      id: null,
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       database: {
         knex: () => ({
           select: () => ({

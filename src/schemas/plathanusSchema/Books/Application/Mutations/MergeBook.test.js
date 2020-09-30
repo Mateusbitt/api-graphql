@@ -1,5 +1,6 @@
 import MergeBook from './MergeBook.js'
 import { validation } from '../../../../../interfaces/http/core/validation.js'
+import { errorHandling } from '../../../../../interfaces/http/core/errorHandling.js'
 
 describe('MergeBook Mutation', () => {
   it('will create a book', async () => {
@@ -12,9 +13,13 @@ describe('MergeBook Mutation', () => {
       },
     }
     const ctx = {
-      id: null,
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       core: {
         validation,
+        errorHandling,
       },
       database: {
         knex: () => (
@@ -43,9 +48,13 @@ describe('MergeBook Mutation', () => {
       },
     }
     const ctx = {
-      id: null,
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       core: {
         validation,
+        errorHandling,
       },
       database: {
         knex: () => (
@@ -72,7 +81,10 @@ describe('MergeBook Mutation', () => {
       deleteIt: true,
     }
     const ctx = {
-      id: null,
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       database: {
         knex: () => (
           {
@@ -105,9 +117,13 @@ describe('MergeBook Mutation', () => {
       },
     }
     const ctx = {
-      id: null,
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       core: {
         validation,
+        errorHandling,
       },
       database: {
         knex: () => (
@@ -141,9 +157,13 @@ describe('MergeBook Mutation', () => {
       },
     }
     const ctx = {
-      id: '01',
+      user: {
+        id: '1',
+        role: 'librarian',
+      },
       core: {
         validation,
+        errorHandling,
       },
       database: {
         knex: () => (
