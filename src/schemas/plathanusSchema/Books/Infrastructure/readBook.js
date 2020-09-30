@@ -1,4 +1,4 @@
-export default (ctx, { id, deleted }) => {
+export default (ctx, { id, deleted, pagination }) => {
   const sql = ctx.database.knex('books as b')
     .select(
       'b.book_id as _id',
@@ -12,6 +12,9 @@ export default (ctx, { id, deleted }) => {
   if (!deleted) {
     sql.whereNull('b.deleted_at')
   }
+  sql.limit(pagination && pagination.limit ? pagination.limit : 100)
+  sql.offset(pagination && pagination.offset ? pagination.offset : 0)
+
   return (
     ctx.database.knexnest(sql)
       .then((data) => data)

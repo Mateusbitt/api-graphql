@@ -14,7 +14,9 @@ describe('Books Queries', () => {
       database: {
         knex: () => ({
           select: () => ({
-            whereNull: () => {},
+            whereNull: () => ({}),
+            limit: () => ({}),
+            offset: () => true,
           }),
         }),
         knexnest: () => new Promise((resolve) => { resolve({ id: '1' }) }),

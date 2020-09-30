@@ -30,6 +30,8 @@ describe('MergeUser Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }
             ),
           }),
@@ -67,6 +69,8 @@ describe('MergeUser Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }),
             update: () => ({
               where: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),
@@ -106,6 +110,8 @@ describe('MergeUser Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }),
             update: () => ({
               where: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),
@@ -137,6 +143,8 @@ describe('MergeUser Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }),
             update: () => ({
               where: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),

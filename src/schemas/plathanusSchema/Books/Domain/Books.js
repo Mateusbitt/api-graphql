@@ -10,6 +10,7 @@ export const BookQueries = `
 Books(
   id: ID
   deleted: Boolean
+  pagination: pagination
 ): [Book]
 `
 export const BookMutations = `

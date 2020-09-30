@@ -28,6 +28,8 @@ describe('MergeBook Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }
             ),
           }),
@@ -63,6 +65,8 @@ describe('MergeBook Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }),
             update: () => ({
               where: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),
@@ -92,6 +96,8 @@ describe('MergeBook Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }),
             update: () => ({
               where: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),
@@ -132,6 +138,8 @@ describe('MergeBook Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }
             ),
           }),
@@ -172,6 +180,8 @@ describe('MergeBook Mutation', () => {
             select: () => ({
               whereNull: () => {},
               where: () => {},
+              limit: () => ({}),
+              offset: () => true,
             }
             ),
           }),
