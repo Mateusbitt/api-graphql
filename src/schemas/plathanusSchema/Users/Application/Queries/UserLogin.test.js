@@ -12,6 +12,7 @@ describe('User Login', () => {
       id: null,
       core: {
         createToken: () => 'abc',
+        errorHandling,
       },
       libs: {
         crypto,
@@ -26,7 +27,7 @@ describe('User Login', () => {
             }),
           }),
         }),
-        knexnest: () => new Promise((resolve) => { resolve({ id: '1' }) }),
+        knexnest: () => new Promise((resolve) => { resolve([{ id: '1' }]) }),
       },
     }
     const userLoginMocked = await UserLogin(null, params, ctx)

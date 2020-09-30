@@ -8,6 +8,6 @@ export default (ctx, { username, password }) => {
     .andWhere('u.username', '=', username)
     .andWhere('u.password', '=', password)
   return (
-    ctx.database.knexnest(sql).then((data) => data)
+    ctx.database.knexnest(sql).then((data) => (data && data[0] ? data[0] : null))
   )
 }
